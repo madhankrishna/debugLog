@@ -1,0 +1,43 @@
+---
+import Header from '../components/Header.astro';
+import '../styles/global.css';
+
+const {
+  title = 'debugLog — Salesforce notes for builders.',
+  description = 'Practical notes, tutorials and lessons from the Salesforce ecosystem.',
+  image = '/og-default.svg',
+} = Astro.props;
+
+const site = 'https://debuglog.dev';
+const canonical = new URL(Astro.url.pathname, site).href;
+const absoluteImage = new URL(image, site).href;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="debugLog" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={absoluteImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={absoluteImage} />
+    <link rel="icon" href="/favicon.svg" />
+    <title>{title}</title>
+  </head>
+  <body>
+    <Header />
+    <slot />
+    <footer class="site-footer wrap">
+      <span>© {new Date().getFullYear()} debugLog</span>
+      <span>Salesforce notes for builders.</span>
+    </footer>
+  </body>
+</html>

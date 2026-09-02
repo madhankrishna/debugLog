@@ -1,0 +1,45 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection, render } from 'astro:content';
+import ArticleMeta from '../../components/ArticleMeta.astro';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('blogs');
+  return posts.map(post => ({ params: { slug: post.slug }, props: { post } }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+---
+<Base title={`${post.data.title} — debugLog`} description={post.data.description} image={post.data.heroImage ?? '/og-default.svg'}>
+<main class="page wrap article">
+  <div class="crumb">Home / {post.data.category} / {post.data.title}</div>
+
+  <header class="article-head">
+    <ArticleMeta category={post.data.category} readTime={post.data.readTime} date={post.data.date} />
+    <h1>{post.data.title}</h1>
+    <p class="byline">By Bathini Madan Krishna · {post.data.date.toLocaleDateString('en-GB',{day:'2-digit',month:'long',year:'numeric'})}</p>
+  </header>
+
+  <div class="article-grid">
+    <article class="content">
+      <div class="code-hero">
+        <span>DEBUGLOG / NOTE</span>
+        <div><b>{post.data.category.toUpperCase()}</b><br><em>BUILD → DEBUG → LEARN → SHARE</em></div>
+      </div>
+      <Content />
+      <div style="margin-top:45px;display:flex;gap:7px;flex-wrap:wrap">
+        {post.data.tags.map(tag => <span class="tag" style="border:1px solid var(--line);padding:5px 8px;border-radius:4px">{tag.toUpperCase()}</span>)}
+      </div>
+    </article>
+    <aside>
+      <div class="toc">
+        <div class="kicker">ON THIS NOTE</div>
+        <a href="#">Introduction</a>
+        <a href="#">Key ideas</a>
+        <a href="#">Examples</a>
+      </div>
+    </aside>
+  </div>
+</main>
+</Base>

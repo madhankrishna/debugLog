@@ -1,0 +1,4 @@
+---
+const { category, readTime, date } = Astro.props;
+---
+<div class="tag">{category.toUpperCase()} · {readTime.toUpperCase()} READ · {date.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}).toUpperCase()}</div>

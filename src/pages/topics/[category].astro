@@ -1,0 +1,18 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+export async function getStaticPaths() {
+  const posts = await getCollection('blogs');
+  const cats = [...new Set(posts.map(p => p.data.category))];
+  return cats.map(category => ({ params: { category: category.toLowerCase().replaceAll(' ','-') }, props: { category, posts: posts.filter(p => p.data.category === category) }}));
+}
+const { category, posts } = Astro.props;
+---
+<Base title={`${category} — debugLog`}>
+<main class="page wrap"><div class="crumb">Home / Topics / {category}</div>
+<div class="list-head"><div><div class="kicker">TOPIC</div><h1>{category}</h1><p>Articles, patterns and lessons from {category}.</p></div><div class="count">{posts.length}<small>NOTES</small></div></div>
+<div class="filters"><a class="active" href={`/topics/${category.toLowerCase().replaceAll(' ','-')}`}>{category}</a><a href="/topics">All topics</a></div>
+<div>{posts.sort((a,b)=>b.data.date.valueOf()-a.data.date.valueOf()).map((post,i)=>
+<a class="post" href={`/blog/${post.slug}`}><div class="post-num">{String(i+1).padStart(2,'0')}</div><div><div class="tag">{post.data.category.toUpperCase()} · {post.data.readTime.toUpperCase()} READ</div><h2>{post.data.title}</h2><p>{post.data.description}</p><span class="read">Read note →</span></div><time>{post.data.date.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}).toUpperCase()}</time></a>
+)}</div>
+</main></Base>

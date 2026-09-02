@@ -1,0 +1,21 @@
+---
+const current = Astro.url.pathname;
+---
+<header class="site-header">
+  <div class="wrap nav">
+    <a class="logo" href="/"><span class="logo-mark">›_</span>debugLog</a>
+    <nav class="nav-links">
+      <a class={current === '/' ? 'active' : ''} href="/">Home</a>
+      <a class={current.startsWith('/topics') || current.startsWith('/blog') ? 'active' : ''} href="/topics">Topics</a>
+      <a href="/#about">About</a>
+    </nav>
+    <button class="theme" id="theme-toggle" aria-label="Toggle theme">☼</button>
+  </div>
+</header>
+<script>
+  const button = document.querySelector('#theme-toggle');
+  button?.addEventListener('click', () => {
+    document.documentElement.classList.toggle('light');
+    localStorage.setItem('debuglog-theme', document.documentElement.classList.contains('light') ? 'light' : 'dark');
+  });
+</script>

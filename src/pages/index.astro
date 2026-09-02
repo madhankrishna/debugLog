@@ -1,0 +1,50 @@
+---
+import Base from '../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blogs');
+const latest = posts.sort((a,b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+<Base>
+<main>
+  <section class="hero wrap">
+    <div class="kicker">SALESFORCE / ENGINEERING NOTES</div>
+    <h1>Salesforce notes<br><span>for builders.</span></h1>
+    <p>Practical notes, tutorials and lessons from the Salesforce ecosystem — without the noise.</p>
+    <div class="actions"><a class="btn primary" href="#latest">Read latest →</a></div>
+  </section>
+  <section id="latest" class="section wrap">
+    <div class="section-top"><div><div class="kicker">LATEST NOTES</div><h2>Recent writing</h2></div></div>
+    <div>
+      {latest.map((post, i) => (
+        <a class="post" href={`/blog/${post.slug}`}>
+          <div class="post-num">{String(i+1).padStart(2,'0')}</div>
+          <div>
+            <div class="tag">{post.data.category.toUpperCase()} · {post.data.readTime.toUpperCase()} READ</div>
+            <h2>{post.data.title}</h2>
+            <p>{post.data.description}</p>
+            <span class="read">Read note →</span>
+          </div>
+          <time>{post.data.date.toLocaleDateString('en-GB',{day:'2-digit',month:'short',year:'numeric'}).toUpperCase()}</time>
+        </a>
+      ))}
+    </div>
+  </section>
+  <section id="about" class="section wrap">
+    <div class="kicker">ABOUT</div>
+    <h2>Hi, I'm Bathini Madan Krishna.</h2>
+    <p style="max-width:700px;color:var(--muted)">
+      I'm a Salesforce professional who enjoys building solutions, solving tricky problems,
+      and learning how the platform keeps evolving.
+    </p>
+    <p style="max-width:700px;color:var(--muted)">
+      I use debugLog to share practical lessons from Salesforce development, clouds,
+      integrations, architecture and AI — things I build, debug and learn along the way.
+    </p>
+    <div class="actions" style="margin-top:18px">
+      <a class="read" href="https://www.linkedin.com/in/madhankrishna/" aria-label="Bathini Madan Krishna on LinkedIn" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+      <a class="read" href="mailto:madhankrishna24@gmail.com" aria-label="Email Bathini Madan Krishna">Email ↗</a>
+    </div>
+  </section>
+</main>
+</Base>

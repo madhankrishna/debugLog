@@ -1,0 +1,22 @@
+---
+import Base from '../../layouts/Base.astro';
+import { getCollection } from 'astro:content';
+
+const posts = await getCollection('blogs');
+const topics = [...new Set(posts.map(p => p.data.category))];
+---
+<Base title="Topics — debugLog">
+<main class="page wrap">
+  <div class="crumb">Home / Topics</div>
+  <div class="list-head">
+    <div><div class="kicker">TOPICS</div><h1>Choose a topic.</h1><p>Browse notes by Salesforce cloud, technology or engineering area.</p></div>
+  </div>
+  <div class="topic-grid" style="margin-top:35px">
+    {topics.map(t => (
+      <a class="topic" href={`/topics/${t.toLowerCase().replaceAll(' ','-')}`}>
+        <strong>{t}</strong><span>View notes →</span>
+      </a>
+    ))}
+  </div>
+</main>
+</Base>

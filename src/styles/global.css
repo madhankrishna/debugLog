@@ -90,3 +90,41 @@ footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-s
 .post[hidden],.search-empty[hidden]{display:none}
 .search-empty{padding:28px 0;color:var(--muted);border-top:1px solid var(--line)}
 @media(max-width:450px){.section-top{flex-wrap:wrap}.search-count{margin-top:12px}}
+
+
+/* Editorial layout for the Agentforce + Data Cloud series */
+.content{max-width:760px;margin-inline:auto}
+.content>p:first-of-type{font-size:1.12rem;line-height:1.85;color:#d2dde2}
+.content blockquote{margin:28px 0;padding:20px 24px;border:1px solid #24594f;border-left:3px solid var(--accent);border-radius:0 8px 8px 0;background:linear-gradient(110deg,rgba(56,214,176,.09),rgba(15,20,27,.65));color:var(--text);font-size:1.06rem}
+.content blockquote p{color:var(--text);margin:0}
+.content table{width:100%;border-collapse:separate;border-spacing:0;margin:24px 0;border:1px solid var(--line);border-radius:8px;overflow:hidden;font-size:.94rem}
+.content th,.content td{padding:14px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+.content th{font:500 11px "DM Mono";letter-spacing:.08em;text-transform:uppercase;color:var(--accent);background:var(--panel)}
+.content tr:last-child td{border-bottom:0}
+.content td:first-child{font-weight:600;color:var(--text);min-width:145px}
+.content ul{padding-left:1.35rem}
+.content li{padding-left:.2rem;margin:.45rem 0;color:#aab3bf}
+.content li::marker{color:var(--accent)}
+.content h2{padding-top:12px}
+.content h2:before{content:"";display:block;width:34px;height:2px;background:var(--accent);margin-bottom:16px}
+.content .dc-layout{margin:25px 0}
+.dc-steps{display:grid;gap:0;border:1px solid var(--line);border-radius:10px;overflow:hidden;background:var(--panel)}
+.dc-step{display:grid;grid-template-columns:52px 1fr;gap:15px;padding:20px;border-bottom:1px solid var(--line)}
+.dc-step:last-child{border-bottom:0}
+.dc-step-num,.dc-concept>span{font:500 11px "DM Mono";color:var(--accent);padding-top:4px}
+.dc-step strong,.dc-concept strong{font-family:"Space Grotesk";font-size:17px;color:var(--text)}
+.dc-step p,.dc-concept p{margin:5px 0 0;color:var(--muted);font-size:.92rem}
+.content img[src$="agentforce-data-cloud-architecture.svg"]{display:block;width:100%;height:auto;border:1px solid var(--line);border-radius:10px;background:#0d151e;margin:26px 0 10px}
+.article-figure-caption{margin:0 0 28px;text-align:center;color:var(--muted);font-size:.82rem}
+.dc-concept-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}
+.dc-concept{padding:18px 15px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+.dc-concept>span{display:block;margin-bottom:14px}
+.dc-concept strong{font-size:15px}
+@media(max-width:600px){
+ .content table{font-size:.84rem}
+ .content th,.content td{padding:10px}
+ .content td:first-child{min-width:105px}
+ .dc-step{grid-template-columns:34px 1fr;padding:16px 13px}
+ .dc-concept-grid{grid-template-columns:1fr}
+ .dc-concept{padding:15px}
+}

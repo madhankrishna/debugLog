@@ -1,0 +1,69 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="640" viewBox="0 0 1200 640" role="img" aria-labelledby="title desc">
+  <title id="title">Agentforce and Data Cloud customer context architecture</title>
+  <desc id="desc">Customer data from CRM, commerce, and web analytics flows through Data Cloud ingestion, data modeling, and identity resolution into unified customer context. Configured Agentforce retrieval and actions use the relevant context to respond to the customer.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0d151e"/><stop offset="1" stop-color="#101e26"/></linearGradient>
+    <linearGradient id="mint" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#163d39"/><stop offset="1" stop-color="#102a2a"/></linearGradient>
+    <marker id="arrow" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L8,4.5 L0,9 Z" fill="#46d9b5"/></marker>
+    <style>
+      .label{font:600 14px 'DM Mono',monospace;letter-spacing:2px;fill:#46d9b5}
+      .title{font:600 23px 'Space Grotesk',sans-serif;fill:#eef5f5}
+      .sub{font:16px 'DM Sans',sans-serif;fill:#a2b2bd}
+      .small{font:14px 'DM Sans',sans-serif;fill:#8fa2ad}
+      .node{fill:#121b25;stroke:#33434e;stroke-width:1.5}
+      .nodeMint{fill:url(#mint);stroke:#318e7b;stroke-width:1.5}
+      .arrow{fill:none;stroke:#46d9b5;stroke-width:2.5;marker-end:url(#arrow)}
+    </style>
+  </defs>
+  <rect width="1200" height="640" rx="24" fill="url(#bg)"/>
+  <text x="54" y="54" class="label">CUSTOMER 360 · CONCEPTUAL FLOW</text>
+  <text x="54" y="91" class="title" font-size="30">From fragmented data to grounded AI</text>
+  <text x="54" y="119" class="sub">Each stage adds context. Access still depends on configured retrieval and permissions.</text>
+
+  <rect x="54" y="165" width="260" height="178" rx="16" class="node"/>
+  <text x="78" y="198" class="label">01 / SOURCES</text>
+  <text x="78" y="235" class="title">Customer data</text>
+  <rect x="78" y="255" width="94" height="31" rx="7" fill="#1a2933"/><text x="125" y="275" text-anchor="middle" class="small">Salesforce CRM</text>
+  <rect x="181" y="255" width="106" height="31" rx="7" fill="#1a2933"/><text x="234" y="275" text-anchor="middle" class="small">Commerce</text>
+  <rect x="78" y="295" width="209" height="31" rx="7" fill="#1a2933"/><text x="182" y="315" text-anchor="middle" class="small">Web activity / events</text>
+
+  <path d="M314 254 H352" class="arrow"/>
+  <rect x="362" y="165" width="230" height="178" rx="16" class="nodeMint"/>
+  <text x="386" y="198" class="label">02 / DATA CLOUD</text>
+  <text x="386" y="235" class="title">Ingest &amp; model</text>
+  <text x="386" y="267" class="sub">Data Streams</text>
+  <text x="386" y="293" class="sub">DLOs → DMOs</text>
+  <text x="386" y="319" class="small">Represent source data consistently</text>
+
+  <path d="M592 254 H630" class="arrow"/>
+  <rect x="640" y="165" width="230" height="178" rx="16" class="nodeMint"/>
+  <text x="664" y="198" class="label">03 / IDENTITY</text>
+  <text x="664" y="235" class="title">Resolve records</text>
+  <text x="664" y="267" class="sub">Configured match rules</text>
+  <text x="664" y="293" class="sub">Unified individual</text>
+  <text x="664" y="319" class="small">Connect identities with care</text>
+
+  <path d="M870 254 H908" class="arrow"/>
+  <rect x="918" y="165" width="228" height="178" rx="16" class="node"/>
+  <text x="942" y="198" class="label">04 / CONTEXT</text>
+  <text x="942" y="235" class="title">Relevant facts</text>
+  <text x="942" y="267" class="sub">Orders · interests</text>
+  <text x="942" y="293" class="sub">Recent product views</text>
+  <text x="942" y="319" class="small">Related data stays related</text>
+
+  <path d="M1032 343 V405 H780" class="arrow"/>
+  <rect x="640" y="420" width="330" height="144" rx="16" class="nodeMint"/>
+  <text x="666" y="453" class="label">05 / AGENTFORCE</text>
+  <text x="666" y="490" class="title">Configured retrieval + actions</text>
+  <text x="666" y="521" class="sub">Use permitted, relevant context</text>
+  <text x="666" y="545" class="small">Ground the response; don't assume access</text>
+
+  <path d="M640 492 H590" class="arrow"/>
+  <rect x="260" y="420" width="320" height="144" rx="16" class="node"/>
+  <text x="286" y="453" class="label">06 / EXPERIENCE</text>
+  <text x="286" y="490" class="title">Helpful customer response</text>
+  <text x="286" y="521" class="sub">Personalized recommendations</text>
+  <text x="286" y="545" class="small">Only when data and access support it</text>
+
+  <text x="54" y="605" class="small">Illustrative architecture · Exact components depend on your Salesforce implementation.</text>
+</svg>

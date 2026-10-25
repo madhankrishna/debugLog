@@ -14,10 +14,22 @@ const latest = posts.sort((a,b) => b.data.date.valueOf() - a.data.date.valueOf()
     <div class="actions"><a class="btn primary" href="#latest">Read latest →</a></div>
   </section>
   <section id="latest" class="section wrap">
-    <div class="section-top"><div><div class="kicker">LATEST NOTES</div><h2>Recent writing</h2></div></div>
-    <div>
+    <div class="section-top">
+      <div><div class="kicker">LATEST NOTES</div><h2>Recent writing</h2></div>
+      <span class="search-count" id="search-count" aria-live="polite">All notes</span>
+    </div>
+    <label class="blog-search">
+      <span class="search-label">SEARCH THE NOTES</span>
+      <input id="blog-search" type="search" placeholder="Try “Agentforce”, “Apex”, or “Data Cloud”…" autocomplete="off" aria-label="Search blog posts by title, description, category, or tag">
+      <span class="search-hint">Search titles, topics, descriptions, and tags</span>
+    </label>
+    <div id="blog-results">
       {latest.map((post, i) => (
-        <a class="post" href={`/blog/${post.slug}`}>
+        <a
+          class="post"
+          href={`/blog/${post.slug}`}
+          data-search={[post.data.title, post.data.description, post.data.category, ...post.data.tags].join(' ').toLowerCase()}
+        >
           <div class="post-num">{String(i+1).padStart(2,'0')}</div>
           <div>
             <div class="tag">{post.data.category.toUpperCase()} · {post.data.readTime.toUpperCase()} READ</div>
@@ -29,6 +41,7 @@ const latest = posts.sort((a,b) => b.data.date.valueOf() - a.data.date.valueOf()
         </a>
       ))}
     </div>
+    <p id="search-empty" class="search-empty" hidden>No notes match that search. Try another keyword or clear the search.</p>
   </section>
   <section id="about" class="section wrap">
     <div class="kicker">ABOUT</div>
@@ -47,4 +60,24 @@ const latest = posts.sort((a,b) => b.data.date.valueOf() - a.data.date.valueOf()
     </div>
   </section>
 </main>
+<script>
+  const searchInput = document.querySelector('#blog-search');
+  const posts = Array.from(document.querySelectorAll('#blog-results .post'));
+  const count = document.querySelector('#search-count');
+  const emptyState = document.querySelector('#search-empty');
+
+  searchInput?.addEventListener('input', () => {
+    const query = searchInput.value.trim().toLowerCase();
+    let visible = 0;
+
+    posts.forEach((post) => {
+      const matches = !query || (post.dataset.search || '').includes(query);
+      post.hidden = !matches;
+      if (matches) visible += 1;
+    });
+
+    count.textContent = query ? `${visible} ${visible === 1 ? 'note' : 'notes'} found` : 'All notes';
+    emptyState.hidden = visible !== 0;
+  });
+</script>
 </Base>

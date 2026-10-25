@@ -1,0 +1,151 @@
+---
+title: "Your Salesforce AI Agent Is Only as Smart as the Data It Can Access"
+description: "Part 1 of a hands-on Agentforce and Data Cloud series: understand customer data fragmentation, identity resolution, unified profiles, and grounded AI experiences."
+category: "Agentforce"
+tags:
+  - Salesforce
+  - Agentforce
+  - Data Cloud
+  - Customer 360
+  - AI
+date: "2026-10-25"
+readTime: "8 min"
+---
+
+Imagine this scenario.
+
+A customer opens your company's website and asks an AI agent:
+
+> "I bought running shoes last month. Can you recommend something that goes well with my purchase?"
+
+The agent responds:
+
+> "I'm sorry, but I don't have information about your previous purchase."
+
+But here's the interesting part:
+
+- The purchase exists in your commerce platform.
+- The customer's Contact record exists in Salesforce CRM.
+- Their browsing activity exists in your website analytics platform.
+
+The information is available. So why can't the agent provide a helpful answer?
+
+Welcome to one of the most important challenges in building AI-powered Salesforce solutions: **customer data fragmentation**.
+
+As someone with five years of experience across Sales Cloud, Service Cloud, and B2B Commerce, I'm exploring how Salesforce Agentforce and Data Cloud can work together to address this challenge.
+
+This is Part 1 of my hands-on learning series.
+
+## 1. The hidden problem behind AI-powered customer experiences
+
+Let's use a fictional customer named Priya Sharma.
+
+Her information is distributed across three systems:
+
+| System | Information available |
+| --- | --- |
+| Salesforce CRM | Contact details and account information |
+| Commerce platform | Five previous orders and purchase history |
+| Website analytics | Product views and browsing activity |
+
+Sounds straightforward, right?
+
+Not necessarily.
+
+Salesforce may identify Priya using a Contact ID. The commerce platform may use a customer ID, while website analytics may use a visitor ID.
+
+Even though these records may represent the same person, the systems don't automatically know that.
+
+This is why connecting systems and connecting customer identities are two different challenges.
+
+## 2. Enter Salesforce Data Cloud
+
+Salesforce Data Cloud helps organizations ingest, model, and unify customer data from supported sources.
+
+Think of it as a way to build a more connected view of a customer across systems.
+
+Here's the simplified journey:
+
+**Step 1 — Ingest the data**
+
+Bring customer records, commerce data, and website engagement information into Data Cloud through supported ingestion methods.
+
+**Step 2 — Model the data**
+
+Map source fields to the appropriate data model objects so that information from different systems can be represented consistently.
+
+**Step 3 — Resolve identities**
+
+Apply configured identity resolution rules to identify records that represent the same individual.
+
+**Step 4 — Build a unified view**
+
+Create a unified individual profile and connect relevant customer information.
+
+One important technical detail: this doesn't mean that every order and browsing event must be merged into one giant table. Data can remain in separate related objects.
+
+The goal is to connect the right information while preserving its meaning and relationships.
+
+## 3. Where does Agentforce fit in?
+
+Now let's return to Priya's question.
+
+"Can you recommend something based on my previous purchase?"
+
+Agentforce can interpret the request and use configured actions and relevant context to generate a response.
+
+With an appropriate solution design, the agent could access relevant purchase history and browsing information, then use that context to assist Priya.
+
+But there is a critical distinction:
+
+> **A unified customer profile does not automatically give an AI agent unrestricted access to every customer record.**
+
+The relevant information must be made available through supported retrieval mechanisms, actions, or other configured capabilities. Permissions, data quality, and grounding must also be considered.
+
+Data Cloud helps make customer information more connected. Agentforce uses available context and configured capabilities to act on it.
+
+Together, they can support more relevant and personalized customer experiences.
+
+## 4. The architecture behind the experience
+
+At a high level, the solution follows this pattern:
+
+**Customer data sources → Data Cloud ingestion → Data modeling → Identity resolution → Unified customer context → Configured Agentforce retrieval and actions → Customer response**
+
+Each stage has a purpose.
+
+If ingestion is incomplete, information may be missing. If identity resolution is inaccurate, records may be associated with the wrong person. If retrieval or permissions are misconfigured, the agent may not access the required context.
+
+Building a reliable AI experience therefore requires more than creating an agent and writing a good prompt.
+
+It requires understanding the data architecture behind the agent.
+
+## 5. What I learned from Part 1
+
+Here are my key takeaways:
+
+- CRM records alone may not provide a complete view of a customer's journey.
+- Data Cloud helps connect customer information across supported sources.
+- Identity resolution is different from simply joining tables.
+- Unified profiles and related records don't automatically become accessible to Agentforce.
+- AI response quality depends on relevant data, correct identity matching, appropriate access, and good solution design.
+
+For Salesforce developers and architects, this is an important foundation for designing data-aware AI solutions.
+
+## What's next?
+
+In Part 2, I'll explore the building blocks of Data Cloud architecture:
+
+- Data Streams
+- Data Lake Objects (DLOs)
+- Data Model Objects (DMOs)
+
+I'll explain how data moves from its source into Data Cloud and how source data is represented in the platform, using a practical Customer 360 project.
+
+I'm documenting this journey one concept and one implementation at a time.
+
+**The goal isn't just to learn AI. It's to understand how to build reliable AI solutions on Salesforce.**
+
+---
+
+#Salesforce #Agentforce #DataCloud #SalesforceDeveloper #Customer360

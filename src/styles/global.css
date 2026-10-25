@@ -77,3 +77,16 @@ footer{border-top:1px solid var(--line);padding:25px 0;color:var(--muted);font-s
 .site-footer{display:flex;justify-content:space-between;gap:20px;padding:40px 0 55px;color:var(--muted);font-size:.8rem;border-top:1px solid var(--line);margin-top:70px}
 .not-found{min-height:60vh;padding-top:100px}
 @media(max-width:700px){.site-footer{flex-direction:column}}
+
+
+/* Homepage blog search */
+.blog-search{display:flex;flex-direction:column;gap:8px;margin:0 0 22px;padding:18px;border:1px solid var(--line);border-radius:8px;background:var(--panel)}
+.search-label{font:500 10px "DM Mono";letter-spacing:.14em;color:var(--accent)}
+.blog-search input{width:100%;padding:13px 14px;border:1px solid var(--line);border-radius:5px;background:var(--bg);color:var(--text);font:inherit;font-size:14px;outline:none}
+.blog-search input:focus{border-color:var(--accent);box-shadow:0 0 0 2px rgba(56,214,176,.12)}
+.blog-search input::placeholder{color:var(--muted)}
+.search-hint,.search-count{font-size:12px;color:var(--muted)}
+.search-count{font-family:"DM Mono";white-space:nowrap}
+.post[hidden],.search-empty[hidden]{display:none}
+.search-empty{padding:28px 0;color:var(--muted);border-top:1px solid var(--line)}
+@media(max-width:450px){.section-top{flex-wrap:wrap}.search-count{margin-top:12px}}
